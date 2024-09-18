@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Models
+﻿namespace Models
 {
     public class Courant
     {
+        //total(double) = total(double) + compte(Courant)
+        public static double operator+ (double left, Courant right)
+        {
+            return ((left < 0)? 0: left) + ((right.Solde < 0) ? 0 : right.Solde);
+        }
+
         private string _numero;
         private double _solde;
         private double _ligneDeCredit;

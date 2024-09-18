@@ -20,5 +20,17 @@
         {
             _comptes.Remove(numero);
         }
+
+        public double AvoirDesComptes(Personne titulaire)
+        {
+            double total = 0;
+
+            foreach (Courant compte in _comptes.Values.Where(c => c.Titulaire == titulaire))
+            {
+                total += compte;
+            }
+
+            return total;
+        }
     }
 }
