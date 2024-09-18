@@ -2,16 +2,16 @@
 {
     public class Banque
     {
-        private Dictionary<string, Courant> _comptes = new Dictionary<string, Courant>();
+        private Dictionary<string, Compte> _comptes = new Dictionary<string, Compte>();
 
         public required string Nom { get; set; }
 
-        public Courant this[string numero]
+        public Compte this[string numero]
         {
             get { return _comptes[numero]; }
         }
 
-        public void Ajouter(Courant courant)
+        public void Ajouter(Compte courant)
         {
             _comptes.Add(courant.Numero, courant);
         }
@@ -25,7 +25,7 @@
         {
             double total = 0;
 
-            foreach (Courant compte in _comptes.Values.Where(c => c.Titulaire == titulaire))
+            foreach (Compte compte in _comptes.Values.Where(c => c.Titulaire == titulaire))
             {
                 total += compte;
             }
