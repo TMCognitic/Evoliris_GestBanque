@@ -1,6 +1,6 @@
 ﻿namespace Models
 {
-    public class Compte
+    public abstract class Compte
     {
         public static double operator +(double left, Compte right)
         {
@@ -58,6 +58,8 @@
             Solde += montant;
         }
 
+        protected abstract double CalculInteret();
+
         public virtual void Retrait(double montant)
         {
             Retrait(montant, 0);
@@ -72,6 +74,11 @@
                 return;
 
             Solde -= montant;
+        }
+
+        public void AppliquerInteret()
+        {
+            Solde += CalculInteret();
         }
     }
 }
