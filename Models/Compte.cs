@@ -50,6 +50,19 @@
             }
         }
 
+        public virtual double LigneDeCredit
+        {
+            get
+            {
+                return 0;
+            }
+
+            set
+            {
+                throw new InvalidOperationException();
+            }
+        }
+
         public void Depot(double montant)
         {
             if (montant <= 0)
@@ -62,15 +75,10 @@
 
         public virtual void Retrait(double montant)
         {
-            Retrait(montant, 0);
-        }
-
-        protected void Retrait(double montant, double ligneDeCredit)
-        {
             if (montant <= 0)
                 return;
 
-            if (Solde - montant < -ligneDeCredit)
+            if (Solde - montant < -LigneDeCredit)
                 return;
 
             Solde -= montant;

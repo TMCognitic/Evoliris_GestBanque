@@ -4,7 +4,7 @@
     {
         private double _ligneDeCredit;
 
-        public double LigneDeCredit
+        public override double LigneDeCredit
         {
             get
             {
@@ -18,12 +18,7 @@
 
                 _ligneDeCredit = value;
             }
-        }
-
-        public override void Retrait(double montant)
-        {
-            Retrait(montant, LigneDeCredit);
-        }
+        }        
 
         protected override double CalculInteret()
         {

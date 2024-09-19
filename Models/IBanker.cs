@@ -1,7 +1,8 @@
 ﻿namespace Models
 {
-    public interface IBanker
+    public interface IBanker : ICustomer
     {
+        double LigneDeCredit { get; set; }
         string Numero { get; }
         Personne Titulaire { get; }
 
