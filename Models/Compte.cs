@@ -65,12 +65,10 @@
         public void Depot(double montant)
         {
             if (montant <= 0)
-                return;
+                throw new ArgumentOutOfRangeException(nameof(montant), "le montant doit être supérieur à 0");
 
             Solde += montant;
         }
-
-        protected abstract double CalculInteret();
 
         public virtual void Retrait(double montant)
         {
@@ -80,14 +78,15 @@
         protected void Retrait(double montant, double ligneDeCredit)
         {
             if (montant <= 0)
-                return;
+                throw new ArgumentOutOfRangeException(nameof(montant), "le montant doit être supérieur à 0");
 
             if (Solde - montant < -ligneDeCredit)
-                return;
+                throw new SoldeInsuffisantException("Solde insuffisant");
 
             Solde -= montant;
         }
 
+        protected abstract double CalculInteret();
         public void AppliquerInteret()
         {
             Solde += CalculInteret();

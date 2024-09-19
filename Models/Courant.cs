@@ -14,7 +14,7 @@
             set
             {
                 if (value < 0)
-                    return;
+                    throw new InvalidOperationException("La ligne de crédit est strictement positive");
 
                 _ligneDeCredit = value;
             }

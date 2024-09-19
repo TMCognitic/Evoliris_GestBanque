@@ -13,11 +13,25 @@
             Epargne epargne = new Epargne("002", titulaire);
             banque.Ajouter(epargne);
 
+            try
+            {
+                courant.LigneDeCredit = -100;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
-            Console.Write("Dépot de -100 sur courant : ");
-            banque["001"].Depot(-100);
-            Console.WriteLine(banque["001"].Solde);
-
+            try
+            {
+                Console.Write("Dépot de -100 sur courant : ");
+                banque["001"].Depot(-100);
+                Console.WriteLine(banque["001"].Solde);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             Console.Write("Dépot de 100 sur courant : ");
             banque["001"].Depot(100);
@@ -27,17 +41,31 @@
             banque["001"].Retrait(200);
             Console.WriteLine(banque["001"].Solde);
 
-            Console.Write("Retrait de 500 sur courant : ");
-            banque["001"].Retrait(500);
-            Console.WriteLine(banque["001"].Solde);
+            try
+            {
+                Console.Write("Retrait de 500 sur courant : ");
+                banque["001"].Retrait(500);
+                Console.WriteLine(banque["001"].Solde);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             Console.Write("Dépot de 100 sur epargne : ");
             banque["002"].Depot(100);
             Console.WriteLine(banque["002"].Solde);
 
-            Console.Write("Retrait de 200 sur epargne : ");
-            banque["002"].Retrait(200);
-            Console.WriteLine(banque["002"].Solde);
+            try
+            {
+                Console.Write("Retrait de 200 sur epargne : ");
+                banque["002"].Retrait(200);
+                Console.WriteLine(banque["002"].Solde);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             Console.Write("Retrait de 50 sur epargne : ");
             banque["002"].Retrait(50);
