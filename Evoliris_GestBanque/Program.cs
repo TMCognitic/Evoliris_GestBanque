@@ -1,9 +1,16 @@
-﻿namespace Evoliris_GestBanque
+﻿using Models.Divers;
+
+namespace Evoliris_GestBanque
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            Carwash carwash = new Carwash();
+            Voiture voiture = new Voiture("1-ABC-123");
+            carwash.Traiter(voiture);
+            Console.WriteLine();
+
             Banque banque = new Banque("EvolirisBanking");
             Personne titulaire = new Personne("Norris", "Chuck", new DateTime(1953, 3, 10));
 

@@ -1,4 +1,5 @@
-﻿namespace Models
+﻿
+namespace Models
 {
     public class Banque
     {
@@ -19,10 +20,20 @@
         public void Ajouter(Compte courant)
         {
             _comptes.Add(courant.Numero, courant);
+            courant.PassageEnNegatifEvent += PassageEnNegatifAction;
+        }
+
+        private void PassageEnNegatifAction(Compte compte)
+        {
+            Console.Write($"(Le compte numéro {compte.Numero} vient de passer en négatif) ");
         }
 
         public void Supprimer(string numero)
         {
+            if (!_comptes.ContainsKey(numero))
+                return;
+
+            _comptes[numero].PassageEnNegatifEvent -= PassageEnNegatifAction;
             _comptes.Remove(numero);
         }
 

@@ -7,6 +7,8 @@
             return ((left < 0) ? 0 : left) + ((right.Solde < 0) ? 0 : right.Solde);
         }
 
+        public event Action<Compte> PassageEnNegatifEvent;
+
         private string _numero;
         private double _solde;
         private Personne _titulaire;
@@ -90,6 +92,11 @@
         public void AppliquerInteret()
         {
             Solde += CalculInteret();
+        }
+
+        protected void Notify()
+        {
+            PassageEnNegatifEvent?.Invoke(this);
         }
     }
 }
