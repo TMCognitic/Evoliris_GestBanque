@@ -4,11 +4,16 @@
     {
         private Dictionary<string, Compte> _comptes = new Dictionary<string, Compte>();
 
-        public required string Nom { get; set; }
+        public string Nom { get; init; }
 
         public Compte this[string numero]
         {
             get { return _comptes[numero]; }
+        }
+        
+        public Banque(string nom)
+        {
+            Nom = nom;
         }
 
         public void Ajouter(Compte courant)

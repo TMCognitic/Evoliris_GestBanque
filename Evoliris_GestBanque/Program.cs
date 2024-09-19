@@ -4,13 +4,13 @@
     {
         static void Main(string[] args)
         {
-            Banque banque = new Banque() { Nom = "EvolirisBanking" };
-            Personne titulaire = new Personne() { Nom = "Norris", Prenom = "Chuck", DateNaiss = new DateTime(1953, 3, 10) };
+            Banque banque = new Banque("EvolirisBanking");
+            Personne titulaire = new Personne("Norris", "Chuck", new DateTime(1953, 3, 10));
 
-            Courant courant = new Courant() { Numero = "001", LigneDeCredit = 500, Titulaire = titulaire };
+            Courant courant = new Courant("001", 500, titulaire);
             banque.Ajouter(courant);
 
-            Epargne epargne = new Epargne() { Numero = "002", Titulaire = titulaire };
+            Epargne epargne = new Epargne("002", titulaire);
             banque.Ajouter(epargne);
 
 

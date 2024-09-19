@@ -17,6 +17,15 @@
             }
         }
 
+        public Epargne(string numero, Personne titulaire) : base(numero, titulaire)
+        {
+        }
+
+        public Epargne(string numero, Personne titulaire, double solde, DateTime dateDernierRetrait) : base(numero, titulaire, solde)
+        {
+            DateDernierRetrait = dateDernierRetrait;
+        }
+
         public override void Retrait(double montant)
         {
             double oldSolde = Solde;
